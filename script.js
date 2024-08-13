@@ -1,26 +1,29 @@
-const permission = document.querySelector(".permission")
-const results = document.querySelector(".results")
+let id;
+let target;
+let options;
 
-const options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0,
-  };
-  
-  function success(pos) {
-    const crd = pos.coords;
-  
-    
-    results.innerHTML = ` Latitude : ${crd.latitude}
-    Longitude: ${crd.longitude}
-    More or less ${crd.accuracy} meters`
+function success(pos) {
+  const crd = pos.coords;
 
-    results.style.display = "block"
+  if (target.latitude === crd.latitude && target.longitude === crd.longitude) {
+    console.log("Congratulations, you reached the target");
+    navigator.geolocation.clearWatch(id);
   }
-  
-  function error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
-  
-  navigator.geolocation.getCurrentPosition(success, error, options);
-  
+}
+
+function error(err) {
+  console.error(`ERROR(${err.code}): ${err.message}`);
+}
+
+target = {
+  latitude: 0,
+  longitude: 0,
+};
+
+options = {
+  enableHighAccuracy: false,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+id = navigator.geolocation.watchPosition(success, error, options);
