@@ -9,9 +9,9 @@ function success(pos) {
 
   displayDataDiv.innerHTML = JSON.stringify(pos)
 
-  displayDataDiv.innerHTML = `Timestamp: ${pos.timestamp}<br>
+  displayDataDiv.innerHTML = `Timestamp: ${pos.timestamp}<br><br>
                               Coords<br>
-                              Range: ${pos.coords.accuracy} meters<br>
+                              Range: ${pos.coords.accuracy.toFixed(2)} meters<br>
                               Latitude: ${pos.coords.latitude}<br>
                               Longtitude ${pos.coords.longitude}<br>
                               Speed: ${pos.coords.speed}`
