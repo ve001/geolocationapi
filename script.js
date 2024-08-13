@@ -1,6 +1,6 @@
 let id;
 let target;
-let options;
+let options; 
 
 const displayDataDiv = document.getElementById("DisplayData")
 
@@ -14,7 +14,7 @@ function success(pos) {
                               Range: ${pos.coords.accuracy.toFixed(2)} meters<br>
                               Latitude: ${pos.coords.latitude}<br>
                               Longtitude ${pos.coords.longitude}<br>
-                              Speed: ${pos.coords.speed != null ? pos.coords.speed.toFixed(2) * 3.6 : 0}km/h`
+                              Speed: ${pos.coords.speed != null ? (pos.coords.speed * 3.6).toFixed(2) : 0}km/h`
 }
 
 function error(err) {
